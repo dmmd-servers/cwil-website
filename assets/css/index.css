@@ -1,0 +1,27 @@
+/* Styles */
+html, body {
+    background-color: #1f1f1f;
+    height: 100%;
+    margin: 0px;
+    min-height: 100vh;
+    min-width: 100%;
+    padding: 0px;
+    width: 100%;
+}
+
+main {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+p {
+    color: #efefef;
+    font-size: 15px;
+}
+
+img {
+    height: 35px;
+}
