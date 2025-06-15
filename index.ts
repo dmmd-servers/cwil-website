@@ -2,7 +2,7 @@
 import chalk from "chalk";
 import access from "./core/access";
 import audit from "./core/audit";
-import * as project from "./core/project";
+import project from "./core/project";
 
 // Creates server
 const server = Bun.serve({
