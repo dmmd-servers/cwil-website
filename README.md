@@ -21,7 +21,7 @@ bun .
 ## Configuration
 
 ```.env
-# Server port
+# Server port.
 PORT=3000
 ```
 
@@ -31,4 +31,4 @@ Active contributions are welcome. Don't expect anything glorious from this repos
 
 ---
 
-###### Last Updated: June 15th, 2025, 4:36 PM EST.
+###### Last Updated: June 23rd, 2025, 9:48 PM EST.

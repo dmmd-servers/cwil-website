@@ -4,18 +4,19 @@ import direct from "../core/direct";
 import faults from "../core/faults";
 
 // Defines route
-export async function route(request: Request, server: Bun.Server): Promise<Response> {
-    // Parses url
-    const url = new URL(request.url);
-    const target = url.pathname.match(/^\/(.*)$/);
-    if(target === null) throw new faults.RouteAbort();
-
+export async function route(url: URL, request: Request, server: Bun.Server): Promise<Response> {
     // Resolves static
-    const filepath = nodePath.resolve(direct.contents, target[1]!);
-    if(!filepath.startsWith(direct.contents)) throw new faults.MissingEndpoint();
+    const pattern = url.pathname.match(/^\/(.*)$/);
+    if(pattern === null) throw new faults.RouteAbort();
+    const filepath = nodePath.resolve(direct.contents, pattern[1]!);
+    if(!filepath.startsWith(direct.contents)) throw new faults.RouteAbort();
     const file = Bun.file(filepath);
     if(!(await file.exists())) throw new faults.RouteAbort();
-    return new Response(file);
+    return new Response(file, {
+        headers: {
+            "cache-control": "max-age=86400"
+        }
+    });
 }
 
 // Exports
