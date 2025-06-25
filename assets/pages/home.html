@@ -1,4 +1,269 @@
+<!-- Styles -->
+<style>
+    /* Sections */
+    main > section {
+        padding: 100px clamp(50px, 10%, 10%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 75px 0px;
+    }
+    /* Stars */
+    main .stars {
+        text-align: center;
+    }
+    
+    /* About */
+    #about-title h1 {
+        font-size: 40px;
+        padding: 5px 10px;
+        text-align: center;
+    }
+
+    #about-title h2 {
+        font-size: 25px;
+        padding: 5px 10px;
+        text-align: center;
+    }
+
+    #about-preview {
+        display: flex;
+        flex-direction: column;
+        gap: 25px 0px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #about-preview h3 {
+        text-align: center;
+    }
+
+    #about-preview img {
+        max-height: 250px;
+    }
+
+    #about-invite {
+        display: flex;
+        flex-direction: column;
+        gap: 15px 0px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #about-invite h3 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    #about-invite a {
+        color: var(--sd-blue-800);
+    }
+
+    /* News */
+    #news h1 {
+        font-size: 30px;
+    }
+
+    #news > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 50px 0px;
+    }
+
+    /* History */
+    #history h1 {
+        font-size: 30px;
+    }
+
+    #history .history-page {
+        display: flex;
+        gap: 75px 75px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media screen and (max-width: 800px) {
+        #history .history-page {
+            flex-direction: column;
+        }
+    }
+
+    #history .history-page > img {
+        width: clamp(100px, 100%, 500px);
+    }
+
+    #history .history-text {
+        display: flex;
+        gap: 15px 0px;
+        flex-direction: column;
+        width: clamp(100px, 100%, 500px);
+    }
+
+    #history .history-text h2 {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    #history .history-text span {
+        text-align: justify;
+    }
+
+    /* FAQ */
+    #faq h1 {
+        font-size: 30px;
+    }
+
+    #faq a {
+        color: var(--sd-blue-800);
+    }
+
+    #faq .faq-prompt {
+        display: flex;
+        align-items: left;
+        flex-direction: column;
+        gap: 10px 0px;
+        width: 100%;
+    }
+
+    #faq .faq-question {
+        font-weight: bold;
+    }
+</style>
+
 <!-- About -->
-<div id="about">
-    <h2>Welcome to CWIL!</h2>
-</div>
+<section id="about">
+    <div id="about-title">
+        <h1>Geesecraft: College While It Lasts!</h1>
+        <h2>---= A 4-Year Modded Survival Minecraft Server Plan =---</h2>
+    </div>
+    <div id="about-preview">
+        <h3>-= Server Preview =-</h3>
+        <span>some screenshots eventually tm</span>
+        <span>more content to fill space right now</span>
+        <span>hi mom im on camera</span>
+        <span>.w.</span>
+        <span>"stop stalking me ben" - peakizt 2025</span>
+        <span>oh actually i got one here</span>
+        <img src="/assets/src/looking_chilly.png" alt="K4 standing menacingly in space while taking damage.">
+    </div>
+    <div id="about-invite">
+        <h3>-= Come Join Us! =-</h3>
+        <span>
+            We're always welcoming.
+        </span>
+        <span>
+            Server IP: cwil.dmmdgm.dev
+        </span>
+        <span>
+            Discord Invite:
+            <a href="https://discord.gg/jnPfAEFxF8" target="_blank" rel="noopener noreferrer">
+                https://discord.gg/jnPfAEFxF8
+            </a>
+        </span>
+        <span>
+            "For the Geese, by the Geese, of the Geese!"
+        </span>
+    </div>
+</section>
+<div class="stars">* * *</div>
+
+<!-- News -->
+<section id="news">
+    <h1>News & Updates</h1>
+    <div>
+        <span>
+            Nothing to update so far.
+        </span>
+        <span>I might have a demo server during the summer for mod testing and to play around I guess?</span>
+    </div>
+</section>
+<div class="stars">* * *</div>
+
+<!-- History -->
+<section id="history">
+    <h1>Some history about Geesecraft</h1>
+    <div class="history-page">
+        <div class="history-text">
+            <h2>Humble Beginnings</h2>
+            <span>
+                Geesecraft is a Minecraft SMP hosted by iiPython yearly as part of summer break. It began with only 2 members (DmmD and iiPython) living off in a wooden shack around May of 2021, and it has grown into a welcoming community for relaxing and socializing since then. 
+            </span>
+        </div>
+        <img src="/assets/src/park_at_night.avif" alt="A park that we built in the olden days of Geesecraft. (Season 1)">
+    </div>
+    <div class="history-page">
+        <img src="/assets/src/silly_dmmd.avif" alt="DmmD being silly and stupid. (Season 4)">
+        <div class="history-text">
+            <h2>Freedom for All</h2>
+            <span>
+                What are the rules of Geesecraft? Simple, there are none!* Geesecraft is a you-do-you type server where members aren't required to do anything they don't want to. If you want to bomb somebody's house, go for it (although do expect to be bombed back).
+            </span>
+            <span>
+                *: There might be restrictions in regard to cheating, hacking, or intentionally crashing the server with lag machines. We will let you know if it is acceptable or disruptive. Also, while there are no official rules, please at least have some common sense in the most basic human etiquette. If someone tells you to stop, you probably should! Thank you! 
+            </span>
+        </div>
+    </div>
+    <div class="history-page">
+        <div class="history-text">
+            <h2>Automation First</h2>
+            <span>
+                Do you like technical Minecraft? You're in luck! This is an automation-centered server, and no matter what season you join, you will see automatic farms, game-breaking contraptions, and whatever else you could imagine. Since Season 4, we've also incorporated techology mods such as Applied Energistics 2 into the server, giving us even more power over the landscape.
+            </span>
+        </div>
+        <img src="/assets/src/base_of_operations.avif" alt="iiPython being nerdy about his technology. (Season 4)">
+    </div>
+    <div class="history-page">
+        <img src="/assets/src/goosing.png" alt="Goos being goos.">
+        <div class="history-text">
+            <h2>Revival for College</h2>
+            <span>
+                Now that we are all busy in college, there isn't as much time to play Minecraft together as we once did anymore. However, I didn't want to give up this memory either. That's why I decided to start a new season dedicated specifically to our time in college! 
+            </span>
+            <span>
+                I don't have a picture for this yet. Have a blurry goos for now. .w.
+            </span>
+        </div>
+    </div>
+</section>
+<div class="stars">* * *</div>
+
+<!-- FAQ -->
+<section id="faq">
+    <h1>Frequently? Asked Questions</h1>
+    <div class="faq-prompt">
+        <span class="faq-question">
+            Where do I find the mods?
+        </span>
+        <span class="faq-answer">
+            You can find a list <a href="/mods">here</a>. Do note that we do add / update / remove mods from time to time. If you have a mod that you really want on the server, just let one of us know.
+        </span>
+    </div>
+    <div class="faq-prompt">
+        <span class="faq-question">
+            I have a really cool screenshot that I want to show everyone. How do I submit it to the gallery?
+        </span>
+        <span class="faq-answer">
+            idk, i havent made the gallery page yet
+        </span>
+    </div>
+    <div class="faq-prompt">
+        <span class="faq-question">
+            Are there really no rules?
+        </span>
+        <span class="faq-answer">
+            Just don't be a jerk, otherwise you're free to do anything!
+        </span>
+    </div>
+    <div class="faq-prompt">
+        <span class="faq-question">
+            How do I join?
+        </span>
+        <span class="faq-answer">
+            The server is "1.21.5". The ip is "cwil.dmmdgm.dev". The mod list is above.
+        </span>
+    </div>
+</section>
+<div class="stars">* * *</div>

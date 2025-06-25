@@ -1,9 +1,30 @@
 // Imports
+import nodeFile from "node:fs/promises";
 import chalk from "chalk";
 import audit from "./core/audit";
+import direct from "./core/direct";
 import faults from "./core/faults";
 import project from "./core/project";
 import track from "./core/track";
+
+// Ensures files directory
+{
+    await ensureDirpath(direct.gallery);
+    await ensureDirpath(direct.members);
+    await ensureDirpath(direct.mods);
+    await ensureDirpath(direct.sqlites);
+    await ensureDirpath(direct.worlds);
+    async function ensureDirpath(dirpath: string): Promise<void> {
+        try {
+            audit("ensure", `Ensuring directory "${dirpath}"...`, chalk.yellow);
+            await nodeFile.mkdir(dirpath);
+            audit("ensure", `Directory "${dirpath}" successfully created!`, chalk.green);
+        }
+        catch {
+            audit("ensure", `Directory "${dirpath}" already created!`, chalk.green);
+        }
+    }
+}
 
 // Creates server
 const server = Bun.serve({

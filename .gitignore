@@ -1,2 +1,6 @@
+gallery/*
+mods/*
+sqlite/*
+worlds/*
 node_modules/
 .env

@@ -1,0 +1,39 @@
+/* Navigation */
+nav {
+    align-items: center;
+    display: flex;
+    gap: 15px 50px;
+    justify-content: left;
+    padding: 15px 35px;
+}
+
+@media screen and (max-width: 850px) {
+    nav {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+#nav-name {
+    align-items: center;
+    display: flex;
+    gap: 0px 10px;
+    justify-content: center;
+}
+
+#nav-name img {
+    height: 25px;
+}
+
+#nav-name span {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#nav-pages {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 50px;
+    justify-content: center;
+}

@@ -3,10 +3,7 @@ import faults from "../core/faults";
 
 // Defines subroutes
 const subroutes = [
-    await import("./api"),
-    await import("./assets"),
-    await import("./static"),
-    await import("./home")
+    await import("../api/mods")
 ].map((imported) => imported.default);
 
 // Defines route
@@ -23,7 +20,7 @@ export async function route(url: URL, request: Request, server: Bun.Server): Pro
             throw thrown;
         }
     }
-    throw new faults.MissingEndpoint();
+    throw new faults.MissingApi();
 }
 
 // Exports

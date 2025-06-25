@@ -21,101 +21,11 @@ html, body {
     padding: 0px;
 }
 
-/* Navigation */
-nav {
-    align-items: center;
-    display: flex;
-    gap: 15px 50px;
-    justify-content: left;
-    padding: 15px 35px;
-}
-
-#nav-name {
-    align-items: center;
-    display: flex;
-    gap: 0px 10px;
-    justify-content: left;
-}
-
-#nav-name img {
-    height: 25px;
-}
-
-#nav-name h1 {
-    font-size: 15px;
-}
-
-#nav-pages, #nav-redir {
-    align-items: center;
-    display: flex;
-    gap: 15px 50px;
-    justify-content: left;
-}
-
-#nav-pages a, #nav-redir a {
+a {
     text-decoration: none;
     transition: opacity 0.2s ease;
 }
 
-#nav-pages a:hover, #nav-redir a:hover {
-    opacity: 75%;
-}
-
-#nav-pages {
-    flex: 1;
-}
-
-@media screen and (max-width: 1250px) {
-    nav {
-        justify-content: space-between;
-    }
-    
-    #nav-tabs {
-        flex: initial;
-    }
-
-    #nav-redir {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 850px) {
-    nav {
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    #nav-tabs {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-
-/* Footer */
-footer {
-    align-items: top;
-    justify-content: center;
-    display: flex;
-    gap: 50px 250px;
-    padding: 50px 75px;
-}
-
-footer div {
-    display: flex;
-    flex-direction: column;
-    gap: 15px 0px;
-}
-
-footer span:first-child {
-    font-weight: bold;
-}
-
-footer a {
-    color: var(--sd-blue-800);
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-}
-
-footer a:hover {
+a:hover:not(:has(a:hover)) {
     opacity: 75%;
 }
