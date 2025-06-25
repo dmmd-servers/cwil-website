@@ -5,7 +5,7 @@ import direct from "../core/direct";
 import faults from "../core/faults";
 
 // Creates database
-const database = new BunSqlite(nodePath.resolve(direct.mods, "mods.sqlite"));
+const database = new BunSqlite(nodePath.resolve(direct.sqlites, "mods.sqlite"));
 database.run(`
     CREATE TABLE IF NOT EXISTS mods (
         file UNIQUE PRIMARY KEY,
