@@ -108,7 +108,7 @@ export async function route(url: URL, request: Request, server: Bun.Server): Pro
                 ].filter((jsonKey) => jsonKey in jsonData) as (keyof typeof jsonData & string)[];
                 database.run(`
                     UPDATE mods
-                    SET (${jsonKeys.map((jsonKey) => `${jsonKey} = ?`).join(",")})
+                    SET ${jsonKeys.map((jsonKey) => `${jsonKey} = ?`).join(",")}
                     WHERE file = ?
                 `, jsonKeys.map((jsonKey) => jsonData[jsonKey]).concat([ jsonData.file ]));
                 return new Response(null, {
