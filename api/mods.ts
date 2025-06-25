@@ -93,10 +93,38 @@ export async function route(url: URL, request: Request, server: Bun.Server): Pro
                 else throw new faults.BadRequest();
             }
         }
+        case "PUT": {
+            try {
+                const jsonData = await request.clone().json();
+                if(!("file" in jsonData)) throw new faults.BadRequest();
+                const filePath = nodePath.resolve(direct.mods, jsonData.file);
+                if(!filePath.startsWith(direct.mods)) throw new faults.BadRequest();
+                const jsonKeys = [
+                    "name", "description", "version",
+                    "is_required", "is_optional",
+                    "is_client", "is_server",
+                    "is_active", "is_pending",
+                    "is_removed", "is_outdated"
+                ].filter((jsonKey) => jsonKey in jsonData) as (keyof typeof jsonData)[];
+                database.run(`
+                    UPDATE mods
+                    SET (${jsonKeys.join(",")})
+                    VALUES (${new Array(jsonKeys.length).fill("?").join(",")})
+                    WHERE file = ?
+                `, jsonKeys.map((jsonKey) => jsonData[jsonKey]).concat([ jsonData.file ]));
+                return new Response(null, {
+                    status: 204
+                });
+            }
+            catch(thrown) {
+                if(thrown instanceof faults.GenericFault) throw thrown;
+                else throw new faults.BadRequest();
+            }
+        }
         case "DELETE": {
             try {
                 const jsonData = await request.clone().json();
-                if(!("file" in jsonData)) throw new faults.DoesntExist();
+                if(!("file" in jsonData)) throw new faults.BadRequest();
                 const filePath = nodePath.resolve(direct.mods, jsonData.file);
                 if(!filePath.startsWith(direct.mods)) throw new faults.BadRequest();
                 const fileData = Bun.file(filePath);
