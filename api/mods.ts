@@ -75,7 +75,9 @@ export async function route(url: URL, request: Request, server: Bun.Server): Pro
                 };
                 const jsonKeys = Object.keys(jsonMold) as (keyof typeof jsonMold)[];
                 const jsonData = Object.assign(jsonMold, JSON.parse(jsonForm.toString())) as typeof jsonMold;
-                const fileData = Bun.file(nodePath.resolve(direct.mods, jsonData.file));
+                const filePath = nodePath.resolve(direct.mods, jsonData.file);
+                if(!filePath.startsWith(direct.mods)) throw new faults.BadRequest();
+                const fileData = Bun.file(filePath);
                 if(await fileData.exists()) throw new faults.AlreadyExists();
                 database.run(`
                     INSERT INTO mods (${jsonKeys.join(",")})
@@ -95,7 +97,9 @@ export async function route(url: URL, request: Request, server: Bun.Server): Pro
             try {
                 const jsonData = await request.clone().json();
                 if(!("file" in jsonData)) throw new faults.DoesntExist();
-                const fileData = Bun.file(jsonData);
+                const filePath = nodePath.resolve(direct.mods, jsonData.file);
+                if(!filePath.startsWith(direct.mods)) throw new faults.BadRequest();
+                const fileData = Bun.file(filePath);
                 if(!await fileData.exists()) throw new faults.DoesntExist();
                 database.run(`
                     DELETE FROM mods
