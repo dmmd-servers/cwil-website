@@ -117,6 +117,7 @@ export async function route(url: URL, request: Request, server: Bun.Server): Pro
                 });
             }
             catch(thrown) {
+                console.log(thrown);
                 if(thrown instanceof faults.GenericFault) throw thrown;
                 else throw new faults.BadRequest();
             }
