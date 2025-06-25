@@ -73,7 +73,7 @@ export async function route(url: URL, request: Request, server: Bun.Server): Pro
                     is_removed: 0,
                     is_outdated: 0
                 };
-                const jsonKeys = Object.keys(jsonMold) as (keyof typeof jsonMold)[];
+                const jsonKeys = Object.keys(jsonMold) as (keyof typeof jsonMold & string)[];
                 const jsonData = Object.assign(jsonMold, JSON.parse(jsonForm.toString())) as typeof jsonMold;
                 const filePath = nodePath.resolve(direct.mods, jsonData.file);
                 if(!filePath.startsWith(direct.mods)) throw new faults.BadRequest();
@@ -93,7 +93,7 @@ export async function route(url: URL, request: Request, server: Bun.Server): Pro
                 else throw new faults.BadRequest();
             }
         }
-        case "PUT": {
+        case "PATCH": {
             try {
                 const jsonData = await request.clone().json();
                 if(!("file" in jsonData)) throw new faults.BadRequest();
@@ -105,11 +105,10 @@ export async function route(url: URL, request: Request, server: Bun.Server): Pro
                     "is_client", "is_server",
                     "is_active", "is_pending",
                     "is_removed", "is_outdated"
-                ].filter((jsonKey) => jsonKey in jsonData) as (keyof typeof jsonData)[];
+                ].filter((jsonKey) => jsonKey in jsonData) as (keyof typeof jsonData & string)[];
                 database.run(`
                     UPDATE mods
-                    SET (${jsonKeys.join(",")})
-                    VALUES (${new Array(jsonKeys.length).fill("?").join(",")})
+                    SET (${jsonKeys.map((jsonKey) => `${jsonKey} = ?`).join(",")})
                     WHERE file = ?
                 `, jsonKeys.map((jsonKey) => jsonData[jsonKey]).concat([ jsonData.file ]));
                 return new Response(null, {
