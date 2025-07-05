@@ -1,21 +1,22 @@
 // Imports
-import faults from "../core/faults";
+import faults from "../library/faults";
 
 // Defines subroutes
 const subroutes = [
     await import("./api"),
     await import("./assets"),
-    await import("./static"),
+    await import("./resources"),
     await import("./home")
 ].map((imported) => imported.default);
 
 // Defines route
-export async function route(url: URL, request: Request, server: Bun.Server): Promise<Response> {
-    // Attempts subroutes
+export async function route(server: Bun.Server, request: Request): Promise<Response> {
+    // Resolves subroutes
+    const url = new URL(request.url);
     for(let i = 0; i < subroutes.length; i++) {
         try {
             const subroute = subroutes[i]!;
-            const response = await subroute(url, request, server);
+            const response = await subroute(server, request, url);
             return response;
         }
         catch(thrown) {
